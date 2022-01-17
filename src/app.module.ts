@@ -8,7 +8,6 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from './jwt/jwt.module';
 
-
 @Module({
   imports: [
     UserModule,
