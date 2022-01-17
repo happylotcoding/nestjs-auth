@@ -1,4 +1,3 @@
-import { InternalServerErrorException } from '@nestjs/common';
 import {
   BeforeInsert,
   Column,
@@ -10,6 +9,7 @@ import {
   VersionColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { InternalServerErrorException } from '@nestjs/common';
 
 export enum UserRole {
   General = 'General',
@@ -50,7 +50,6 @@ export class User {
   async hashPassword(): Promise<void> {
     try {
       this.password = await bcrypt.hash(this.password, 10);
-      console.log('---> password::' + this.password);
     } catch (e) {
       console.log(e);
       throw new InternalServerErrorException();
